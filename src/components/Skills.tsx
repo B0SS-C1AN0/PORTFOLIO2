@@ -45,7 +45,6 @@ const skillCategories = [
 ];
 
 const Skills = () => {
-  // Starry canvas background effect
   useEffect(() => {
     const canvas = document.getElementById('star-canvas') as HTMLCanvasElement | null;
     if (!canvas) return;
@@ -59,11 +58,10 @@ const Skills = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Draw twinkling stars
     let animationFrame: number;
     const starCount = 150;
     const stars: { x: number; y: number; r: number; o: number; delta: number }[] = [];
-    // Initialize stars
+
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random(),
@@ -77,7 +75,6 @@ const Skills = () => {
     function drawStars() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (const star of stars) {
-        // Twinkling
         star.o += star.delta;
         if (star.o > 1) {
           star.o = 1; star.delta *= -1;
@@ -121,36 +118,32 @@ const Skills = () => {
     <section
       id="skills"
       className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
-      aria-labelledby="skills-heading"
       style={{
         background:
           "linear-gradient(to bottom, #020617 0%, #0c1222 50%, #020617 100%)"
       }}
     >
-      {/* Starfield background - covers entire section */}
       <canvas
         id="star-canvas"
         className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-        aria-hidden="true"
       />
 
-      {/* Subtle gradient overlays */}
-      <div 
+      <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
             "radial-gradient(circle at 20% 80%, hsl(var(--primary)/0.08) 0%, transparent 15%)," +
             "radial-gradient(circle at 85% 15%, hsl(var(--secondary)/0.06) 0%, transparent 10%)"
         }}
-        aria-hidden="true"
       />
 
-      {/* Foreground content */}
+      {/* === CENTER ON LARGE SCREENS / LEFT ON MOBILE === */}
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
+
+        {/* Header */}
+        <div className="text-left md:text-center mb-16">
           <div
-            className="mx-auto mb-6 h-px w-20 glow-primary"
+            className="mx-left md:mx-auto mb-6 h-px w-20 glow-primary"
             style={{
               background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))"
             }}
@@ -165,7 +158,7 @@ const Skills = () => {
             TECHNICAL EXPERTISE
           </h2>
           <p
-            className="mx-auto max-w-2xl text-lg md:text-xl"
+            className="mx-left md:mx-auto max-w-2xl text-lg md:text-xl"
             style={{ color: "hsl(var(--muted-foreground))" }}
           >
             Mastering the technologies that define the future of software development
@@ -173,7 +166,7 @@ const Skills = () => {
         </div>
 
         {/* Skill Cards */}
-        <div className="grid sm:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-8 justify-start md:justify-center">
           {skillCategories.map((category, idx) => (
             <div
               key={category.category}
@@ -187,7 +180,6 @@ const Skills = () => {
                 style={{
                   background: "linear-gradient(180deg, hsl(var(--primary)), hsl(var(--secondary)))"
                 }}
-                aria-hidden="true"
               />
               <h3
                 className="mb-4 text-lg md:text-xl font-bold font-mono pl-5"
@@ -199,12 +191,7 @@ const Skills = () => {
                 {category.skills.map((skill) => (
                   <Badge
                     key={skill.name}
-                    className="hover-glow px-3 py-1 text-sm font-medium flex items-center bg-[hsl(var(--muted))] border border-[hsl(var(--border))] shadow-inner
-                               transition-all duration-200 cursor-default hover:scale-105 hover:shadow-[0_0_12px_2px_var(--primary)]"
-                    style={{
-                      color: "hsl(var(--foreground))"
-                    }}
-                    aria-label={skill.name}
+                    className="hover-glow px-3 py-1 text-sm font-medium flex items-center bg-[hsl(var(--muted))] border border-[hsl(var(--border))] shadow-inner transition-all duration-200 cursor-default hover:scale-105"
                   >
                     {skill.icon}
                     <span className="align-middle">{skill.name}</span>
@@ -215,7 +202,7 @@ const Skills = () => {
           ))}
         </div>
       </div>
-      {/* Custom Styles */}
+
       <style>{`
         .gradient-text {
           background-clip: text;
@@ -228,11 +215,6 @@ const Skills = () => {
           transform: translateY(25px);
           animation: fadeUp 0.6s forwards;
         }
-        .fade-up-card:nth-child(1) { animation-delay: 0.1s; }
-        .fade-up-card:nth-child(2) { animation-delay: 0.22s; }
-        .fade-up-card:nth-child(3) { animation-delay: 0.34s; }
-        .fade-up-card:nth-child(4) { animation-delay: 0.46s; }
-
         @keyframes fadeUp {
           to {
             opacity: 1;
@@ -240,7 +222,8 @@ const Skills = () => {
           }
         }
         .hover-glow:hover {
-          box-shadow: 0 0 18px 2px hsl(var(--primary) / 0.4), 0 0 0 2px hsl(var(--primary) / 0.23);
+          box-shadow: 0 0 18px 2px hsl(var(--primary) / 0.4),
+                      0 0 0 2px hsl(var(--primary) / 0.23);
         }
       `}</style>
     </section>
