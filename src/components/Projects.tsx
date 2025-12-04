@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Code2, Sparkles, Menu, X } from "lucide-react";
 import { useState } from "react";
 import Navigation from "./Navigation";
-import ex from "./asset"
+import ex from "./assets/ex.png"
 
 const projects = [
   {
@@ -18,8 +18,8 @@ const projects = [
   {
     title: "ANTOVID",
     description:
-      "A Car spotting page filled with luxury and performance.",
-    tech: ["TypeScript", "vite", "HTML5"],
+      "A fast-paced multiplayer shooter built with real-time networking, weapon mechanics, and performance-optimized client logic.",
+    tech: ["TypeScript", "Node.js", "WebSocket", "Three.js", "Express"],
     image: {ex},
     github: "https://github.com/B0SS-C1AN0/RAIDER",
     demo: "#",
@@ -34,7 +34,7 @@ const projects = [
     demo: "#",
   },
   {
-    title: "BLAST TECH SERVICES",
+    title: "BLAST",
     description:
       "An innovative visualization project exploring blast-wave simulations using WebGL and GPU acceleration.",
     tech: ["TypeScript", "WebGL", "Three.js", "GPU-compute", "Vite"],
