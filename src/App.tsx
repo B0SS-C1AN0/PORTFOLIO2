@@ -10,6 +10,7 @@ import Resume from "./pages/Resume";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Pricing from "./components/Pricing";
+import Graphics from "./pages/Graphics";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/graphics" element={<Graphics />} />
 
           {/* Always keep NotFound last */}
           <Route path="*" element={<NotFound />} />
